@@ -37,11 +37,6 @@ let
     STMMAC_ETH = yes;
     VIDEO_HANTRO_ROCKCHIP = yes;
   };
-  pinetabKernelConfig = with lib.kernel; {
-    BES2600 = module;
-    BES2600_WLAN_STDIO = yes;
-    BES2600_DEBUGFS = yes;
-  };
 in with pkgs.linuxKernel; {
   linux_6_6 = pkgs.linuxPackages_6_6;
   linux_6_6_rockchip = packagesFor
@@ -63,7 +58,6 @@ in with pkgs.linuxKernel; {
       version = "6.9.5-danctnix1";
       modDirVersion = "6.9.5-danctnix1";
     };
-    structuredExtraConfig = kernelConfig // pinetabKernelConfig;
   });
 }
 
