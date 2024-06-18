@@ -51,16 +51,17 @@ in with pkgs.linuxKernel; {
   linux_6_8_rockchip = packagesFor
     (kernels.linux_6_8.override { structuredExtraConfig = kernelConfig; });
 
-  linux_6_8_pinetab = packagesFor (kernels.linux_6_8.override {
+  linux_6_9 = pkgs.linuxPackages_6_9;
+  linux_6_9_pinetab = packagesFor (kernels.linux_6_9.override {
     argsOverride = {
       src = pkgs.fetchFromGitHub {
         owner = "dreemurrs-embedded";
         repo = "linux-pinetab2";
-        rev = "b8c008ccf5a0d49bb783d94ebb14e6b1808e055b";
-        sha256 = "1F4GB1U+RSRjTSE8yCFL+Psq21viu+nRxDizPX9vTRc=";
+        rev = "64dc618bdc9c8291d59555c65c0a4fded3739f12";
+        sha256 = "pUQU+d7zDOEbm6HDS3uKvPRwd21nNunHNwZyrfwudh4=";
       };
-      version = "6.8.0-danctnix1";
-      modDirVersion = "6.8.0-danctnix1";
+      version = "6.9.5-danctnix1";
+      modDirVersion = "6.9.5-danctnix1";
     };
     structuredExtraConfig = kernelConfig // pinetabKernelConfig;
   });
